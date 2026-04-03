@@ -87,20 +87,20 @@ const WhatIDo = () => {
             <div className="what-corner"></div>
 
             <div className="what-content-in">
-              <h3>AI & AUTOMATION</h3>
-              <h4>Workflow Intelligence for Organizations</h4>
+              <h3>TECHNICAL SKILLS</h3>
+              <h4>Data-Driven Solutions & Engineering</h4>
               <p>
-                AI specialist helping organizations automate workflows—internal ops
-                and customer-facing—so teams ship faster with less manual work.
+                Specialized in Data Analytics, Google Analytics, and Operations Engineering,
+                shaping business intelligence with technical excellence.
               </p>
               <h5>Skillset & tools</h5>
               <div className="what-content-flex">
-                <div className="what-tags">LLMs &amp; agents</div>
-                <div className="what-tags">Workflow design</div>
-                <div className="what-tags">RAG &amp; retrieval</div>
-                <div className="what-tags">Evals &amp; guardrails</div>
-                <div className="what-tags">Integrations</div>
-                <div className="what-tags">Product strategy</div>
+                <div className="what-tags">Data Analytics</div>
+                <div className="what-tags">Google Analytics</div>
+                <div className="what-tags">Project Management</div>
+                <div className="what-tags">Operations Engineering</div>
+                <div className="what-tags">Computer Engineering</div>
+                <div className="what-tags">CS/IT</div>
               </div>
               <div className="what-arrow"></div>
             </div>
@@ -124,21 +124,19 @@ const WhatIDo = () => {
             </div>
             <div className="what-corner"></div>
             <div className="what-content-in">
-              <h3>BUILD &amp; SCALE</h3>
-              <h4>Shipping AI in Production</h4>
+              <h3>SOFT SKILLS</h3>
+              <h4>Leadership & Interpersonal Excellence</h4>
               <p>
-                I build the systems behind it: APIs, data, voice/real-time, and
-                full-stack products—production-ready, not slide decks.
+                Building cohesive teams and solving complex problems through
+                clear communication and analytical thinking.
               </p>
-              <h5>Skillset & tools</h5>
+              <h5>Core Strengths</h5>
               <div className="what-content-flex">
-                <div className="what-tags">Node.js</div>
-                <div className="what-tags">Python</div>
-                <div className="what-tags">REST &amp; real-time APIs</div>
-                <div className="what-tags">PostgreSQL</div>
-                <div className="what-tags">MongoDB</div>
-                <div className="what-tags">React</div>
-                <div className="what-tags">Cloud &amp; infra</div>
+                <div className="what-tags">Communication</div>
+                <div className="what-tags">Leadership</div>
+                <div className="what-tags">Problem Solving</div>
+                <div className="what-tags">Analytical Thinking</div>
+                <div className="what-tags">Team Collaboration</div>
               </div>
               <div className="what-arrow"></div>
             </div>

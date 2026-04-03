@@ -11,18 +11,53 @@ import {
   RapierRigidBody,
 } from "@react-three/rapier";
 
-const textureLoader = new THREE.TextureLoader();
-const imageUrls = [
-  "/images/react2.webp",
-  "/images/next2.webp",
-  "/images/node2.webp",
-  "/images/express.webp",
-  "/images/mongo.webp",
-  "/images/mysql.webp",
-  "/images/typescript.webp",
-  "/images/javascript.webp",
+const skills = [
+  "Data Analytics",
+  "Google Analytics",
+  "Project Management",
+  "Operations Engineering",
+  "Computer Engineering",
+  "CS/IT",
 ];
-const textures = imageUrls.map((url) => textureLoader.load(url));
+
+const createTextTexture = (text: string) => {
+  const canvas = document.createElement("canvas");
+  canvas.width = 512;
+  canvas.height = 512;
+  const context = canvas.getContext("2d");
+  if (context) {
+    // Background
+    context.fillStyle = "white";
+    context.fillRect(0, 0, 512, 512);
+
+    // Border/Circle
+    context.strokeStyle = "black";
+    context.lineWidth = 10;
+    context.beginPath();
+    context.arc(256, 256, 230, 0, Math.PI * 2);
+    context.stroke();
+
+    // Text
+    context.fillStyle = "black";
+    context.font = "bold 50px Inter, sans-serif";
+    context.textAlign = "center";
+    context.textBaseline = "middle";
+    
+    // Wrap text if too long
+    const words = text.split(" ");
+    if (words.length > 1) {
+      context.fillText(words.slice(0, Math.ceil(words.length / 2)).join(" "), 256, 220);
+      context.fillText(words.slice(Math.ceil(words.length / 2)).join(" "), 256, 290);
+    } else {
+      context.fillText(text, 256, 256);
+    }
+  }
+  const texture = new THREE.CanvasTexture(canvas);
+  texture.anisotropy = 16;
+  return texture;
+};
+
+const textures = skills.map((skill) => createTextTexture(skill));
 
 const sphereGeometry = new THREE.SphereGeometry(1, 28, 28);
 
