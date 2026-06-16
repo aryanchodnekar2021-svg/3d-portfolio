@@ -92,4 +92,7 @@
   .certificates-section {
     padding: 60px 5%;
   }
+  .certificates-grid {
+    grid-template-columns: 1fr;
+  }
 }

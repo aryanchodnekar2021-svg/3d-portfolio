@@ -395,3 +395,34 @@ h2.landing-info-h2 {
     font-size: 75px;
   }
 }
+
+@media screen and (max-width: 1024px) {
+  .landing-intro {
+    width: 100%;
+    text-align: center;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+  }
+  .landing-info {
+    width: 100%;
+    text-align: center;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+  }
+  .landing-info h2 {
+    justify-content: center;
+    margin-left: 0 !important;
+  }
+  h2.landing-info-h2 {
+    width: 100% !important;
+    margin-left: 0 !important;
+  }
+  .landing-h2-info,
+  .landing-h2-info-1,
+  .landing-h2-1,
+  .landing-h2-2 {
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+  }
+}
