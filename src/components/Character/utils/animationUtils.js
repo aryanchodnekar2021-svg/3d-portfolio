@@ -1,15 +1,14 @@
 import * as THREE from "three";
-import { GLTF } from "three-stdlib";
 import { eyebrowBoneNames, typingBoneNames } from "../../../data/boneData";
 
-const setAnimations = (gltf: GLTF) => {
+const setAnimations = (gltf) => {
   let character = gltf.scene;
   let mixer = new THREE.AnimationMixer(character);
   if (gltf.animations) {
     const introClip = gltf.animations.find(
       (clip) => clip.name === "introAnimation"
     );
-    const introAction = mixer.clipAction(introClip!);
+    const introAction = mixer.clipAction(introClip);
     introAction.setLoop(THREE.LoopOnce, 1);
     introAction.clampWhenFinished = true;
     introAction.play();
@@ -18,13 +17,13 @@ const setAnimations = (gltf: GLTF) => {
       const clip = THREE.AnimationClip.findByName(gltf.animations, name);
       if (clip) {
         const action = mixer?.clipAction(clip);
-        action!.play();
-        action!.timeScale = 1.2;
+        action.play();
+        action.timeScale = 1.2;
       } else {
         console.error(`Animation "${name}" not found`);
       }
     });
-    let typingAction: THREE.AnimationAction | null = null;
+    let typingAction = null;
     typingAction = createBoneAction(gltf, mixer, "typing", typingBoneNames);
     if (typingAction) {
       typingAction.enabled = true;
@@ -36,15 +35,15 @@ const setAnimations = (gltf: GLTF) => {
     const introClip = gltf.animations.find(
       (clip) => clip.name === "introAnimation"
     );
-    const introAction = mixer.clipAction(introClip!);
+    const introAction = mixer.clipAction(introClip);
     introAction.clampWhenFinished = true;
     introAction.reset().play();
     setTimeout(() => {
       const blink = gltf.animations.find((clip) => clip.name === "Blink");
-      mixer.clipAction(blink!).play().fadeIn(0.5);
+      mixer.clipAction(blink).play().fadeIn(0.5);
     }, 2500);
   }
-  function hover(gltf: GLTF, hoverDiv: HTMLDivElement) {
+  function hover(gltf, hoverDiv) {
     let eyeBrowUpAction = createBoneAction(
       gltf,
       mixer,
@@ -84,11 +83,11 @@ const setAnimations = (gltf: GLTF) => {
 };
 
 const createBoneAction = (
-  gltf: GLTF,
-  mixer: THREE.AnimationMixer,
-  clip: string,
-  boneNames: string[]
-): THREE.AnimationAction | null => {
+  gltf,
+  mixer,
+  clip,
+  boneNames
+) => {
   const AnimationClip = THREE.AnimationClip.findByName(gltf.animations, clip);
   if (!AnimationClip) {
     console.error(`Animation "${clip}" not found in GLTF file.`);
@@ -101,9 +100,9 @@ const createBoneAction = (
 };
 
 const filterAnimationTracks = (
-  clip: THREE.AnimationClip,
-  boneNames: string[]
-): THREE.AnimationClip => {
+  clip,
+  boneNames
+) => {
   const filteredTracks = clip.tracks.filter((track) =>
     boneNames.some((boneName) => track.name.includes(boneName))
   );

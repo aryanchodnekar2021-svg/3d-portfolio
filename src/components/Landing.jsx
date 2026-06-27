@@ -1,7 +1,6 @@
-import { PropsWithChildren } from "react";
 import "./styles/Landing.css";
 
-const Landing = ({ children }: PropsWithChildren) => {
+const Landing = ({ children }) => {
   return (
     <>
       <div className="landing-section" id="landingDiv">

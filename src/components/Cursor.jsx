@@ -3,10 +3,10 @@ import "./styles/Cursor.css";
 import gsap from "gsap";
 
 const Cursor = () => {
-  const cursorRef = useRef<HTMLDivElement>(null);
+  const cursorRef = useRef(null);
   useEffect(() => {
     let hover = false;
-    const cursor = cursorRef.current!;
+    const cursor = cursorRef.current;
     const mousePos = { x: 0, y: 0 };
     const cursorPos = { x: 0, y: 0 };
     document.addEventListener("mousemove", (e) => {
@@ -24,9 +24,9 @@ const Cursor = () => {
       requestAnimationFrame(loop);
     });
     document.querySelectorAll("[data-cursor]").forEach((item) => {
-      const element = item as HTMLElement;
-      element.addEventListener("mouseover", (e: MouseEvent) => {
-        const target = e.currentTarget as HTMLElement;
+      const element = item;
+      element.addEventListener("mouseover", (e) => {
+        const target = e.currentTarget;
         const rect = target.getBoundingClientRect();
 
         if (element.dataset.cursor === "icons") {

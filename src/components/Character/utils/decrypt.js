@@ -1,4 +1,4 @@
-async function generateAESKey(password: string): Promise<CryptoKey> {
+async function generateAESKey(password) {
   const passwordBuffer = new TextEncoder().encode(password);
   const hashedPassword = await crypto.subtle.digest("SHA-256", passwordBuffer);
   return crypto.subtle.importKey(
@@ -11,9 +11,9 @@ async function generateAESKey(password: string): Promise<CryptoKey> {
 }
 
 export const decryptFile = async (
-  url: string,
-  password: string
-): Promise<ArrayBuffer> => {
+  url,
+  password
+) => {
   const response = await fetch(url);
   const encryptedData = await response.arrayBuffer();
   const iv = new Uint8Array(encryptedData.slice(0, 16));

@@ -14,12 +14,12 @@ import setAnimations from "./utils/animationUtils";
 import { setProgress } from "../Loading";
 
 const Scene = () => {
-  const canvasDiv = useRef<HTMLDivElement | null>(null);
-  const hoverDivRef = useRef<HTMLDivElement>(null);
+  const canvasDiv = useRef(null);
+  const hoverDivRef = useRef(null);
   const sceneRef = useRef(new THREE.Scene());
   const { setLoading } = useLoading();
 
-  const [character, setChar] = useState<THREE.Object3D | null>(null);
+  const [character, setChar] = useState(null);
   useEffect(() => {
     if (canvasDiv.current) {
       let rect = canvasDiv.current.getBoundingClientRect();
@@ -43,9 +43,9 @@ const Scene = () => {
       camera.zoom = 1.1;
       camera.updateProjectionMatrix();
 
-      let headBone: THREE.Object3D | null = null;
-      let screenLight: any | null = null;
-      let mixer: THREE.AnimationMixer;
+      let headBone = null;
+      let screenLight = null;
+      let mixer;
 
       const clock = new THREE.Clock();
 
@@ -78,14 +78,14 @@ const Scene = () => {
       let mouse = { x: 0, y: 0 },
         interpolation = { x: 0.1, y: 0.2 };
 
-      const onMouseMove = (event: MouseEvent) => {
+      const onMouseMove = (event) => {
         handleMouseMove(event, (x, y) => (mouse = { x, y }));
       };
-      let debounce: number | undefined;
-      const onTouchStart = (event: TouchEvent) => {
-        const element = event.target as HTMLElement;
+      let debounce;
+      const onTouchStart = (event) => {
+        const element = event.target;
         debounce = setTimeout(() => {
-          element?.addEventListener("touchmove", (e: TouchEvent) =>
+          element?.addEventListener("touchmove", (e) =>
             handleTouchMove(e, (x, y) => (mouse = { x, y }))
           );
         }, 200);
@@ -131,7 +131,7 @@ const Scene = () => {
         scene.clear();
         renderer.dispose();
         window.removeEventListener("resize", () =>
-          handleResize(renderer, camera, canvasDiv, character!)
+          handleResize(renderer, camera, canvasDiv, character)
         );
         if (canvasDiv.current) {
           canvasDiv.current.removeChild(renderer.domElement);

@@ -1,14 +1,7 @@
 import { useState } from "react";
 import { MdArrowOutward } from "react-icons/md";
 
-interface Props {
-  image: string;
-  alt?: string;
-  video?: string;
-  link?: string;
-}
-
-const WorkImage = (props: Props) => {
+const WorkImage = (props) => {
   const [isVideo, setIsVideo] = useState(false);
   const [video, setVideo] = useState("");
   const handleMouseEnter = async () => {

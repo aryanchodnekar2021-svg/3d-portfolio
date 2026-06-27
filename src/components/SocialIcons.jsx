@@ -9,11 +9,11 @@ import HoverLinks from "./HoverLinks";
 
 const SocialIcons = () => {
   useEffect(() => {
-    const social = document.getElementById("social") as HTMLElement;
+    const social = document.getElementById("social");
 
     social.querySelectorAll("span").forEach((item) => {
-      const elem = item as HTMLElement;
-      const link = elem.querySelector("a") as HTMLElement;
+      const elem = item;
+      const link = elem.querySelector("a");
 
       const rect = elem.getBoundingClientRect();
       let mouseX = rect.width / 2;
@@ -31,7 +31,7 @@ const SocialIcons = () => {
         requestAnimationFrame(updatePosition);
       };
 
-      const onMouseMove = (e: MouseEvent) => {
+      const onMouseMove = (e) => {
         const x = e.clientX - rect.left;
         const y = e.clientY - rect.top;
 

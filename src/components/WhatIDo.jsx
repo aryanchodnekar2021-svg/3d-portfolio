@@ -3,8 +3,8 @@ import "./styles/WhatIDo.css";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 const WhatIDo = () => {
-  const containerRef = useRef<(HTMLDivElement | null)[]>([]);
-  const setRef = (el: HTMLDivElement | null, index: number) => {
+  const containerRef = useRef([]);
+  const setRef = (el, index) => {
     containerRef.current[index] = el;
   };
   useEffect(() => {
@@ -149,7 +149,7 @@ const WhatIDo = () => {
 
 export default WhatIDo;
 
-function handleClick(container: HTMLDivElement) {
+function handleClick(container) {
   container.classList.toggle("what-content-active");
   container.classList.remove("what-sibling");
   if (container.parentElement) {

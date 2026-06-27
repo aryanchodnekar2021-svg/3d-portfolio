@@ -4,7 +4,7 @@ import { useLoading } from "../context/LoadingProvider";
 
 import Marquee from "react-fast-marquee";
 
-const Loading = ({ percent }: { percent: number }) => {
+const Loading = ({ percent }) => {
   const { setIsLoading } = useLoading();
   const [loaded, setLoaded] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
@@ -33,7 +33,7 @@ const Loading = ({ percent }: { percent: number }) => {
     });
   }, [isLoaded]);
 
-  function handleMouseMove(e: React.MouseEvent<HTMLElement>) {
+  function handleMouseMove(e) {
     const { currentTarget: target } = e;
     const rect = target.getBoundingClientRect();
     const x = e.clientX - rect.left;
@@ -92,8 +92,8 @@ const Loading = ({ percent }: { percent: number }) => {
 
 export default Loading;
 
-export const setProgress = (setLoading: (value: number) => void) => {
-  let percent: number = 0;
+export const setProgress = (setLoading) => {
+  let percent = 0;
 
   let interval = setInterval(() => {
     if (percent <= 50) {
@@ -118,7 +118,7 @@ export const setProgress = (setLoading: (value: number) => void) => {
   }
 
   function loaded() {
-    return new Promise<number>((resolve) => {
+    return new Promise((resolve) => {
       clearInterval(interval);
       interval = setInterval(() => {
         if (percent < 100) {

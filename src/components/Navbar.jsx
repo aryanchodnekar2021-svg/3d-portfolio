@@ -6,7 +6,7 @@ import { ScrollSmoother } from "gsap/ScrollSmoother";
 import "./styles/Navbar.css";
 
 gsap.registerPlugin(ScrollSmoother, ScrollTrigger);
-export let smoother: ScrollSmoother;
+export let smoother;
 
 const Navbar = () => {
   useEffect(() => {
@@ -25,11 +25,11 @@ const Navbar = () => {
 
     let links = document.querySelectorAll(".header ul a");
     links.forEach((elem) => {
-      let element = elem as HTMLAnchorElement;
+      let element = elem;
       element.addEventListener("click", (e) => {
         if (window.innerWidth > 1024) {
           e.preventDefault();
-          let elem = e.currentTarget as HTMLAnchorElement;
+          let elem = e.currentTarget;
           let section = elem.getAttribute("data-href");
           smoother.scrollTo(section, true, "top top");
         }
